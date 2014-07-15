@@ -48,4 +48,20 @@ public class ContactEditPopup extends PopupPanel{
 	public void addClickHandler(ClickHandler handler) {
 		cmdSave.addClickHandler(handler);
 	}
+
+	public Button getCmdSave() {
+		return cmdSave;
+	}
+
+	public TextBox getFirstNameField() {
+		return firstNameField;
+	}
+
+	public TextBox getLastNameField() {
+		return lastNameField;
+	}
+
+	public TextBox getEmailField() {
+		return emailField;
+	}
 }
