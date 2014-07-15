@@ -12,7 +12,7 @@
       <configuration>
         <setting name="compilerMaxHeapSize" value="1024" />
         <setting name="gwtScriptOutputStyle" value="DETAILED" />
-        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../../lib/gwt-2.5.1" />
+        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../dev/gwt-2.6.0-rc1" />
         <setting name="webFacet" value="Web" />
       </configuration>
     </facet>
@@ -39,6 +39,7 @@
     <orderEntry type="library" name="com.google.gwt.eclipse.core.GWT_CONTAINER" level="application" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="gwt-user" level="project" />
+    <orderEntry type="library" name="junit-4.10" level="project" />
   </component>
 </module>
 

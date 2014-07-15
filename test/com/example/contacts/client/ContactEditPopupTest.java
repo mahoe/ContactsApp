@@ -1,12 +1,12 @@
 package com.example.contacts.client;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
-import com.example.contacts.shared.Contact;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.junit.client.GWTTestCase;
+
+import com.example.contacts.shared.Contact;
+import junit.framework.Assert;
+import org.junit.Test;
 
 
 public class ContactEditPopupTest extends GWTTestCase
@@ -14,12 +14,13 @@ public class ContactEditPopupTest extends GWTTestCase
 
 	private void setup() {
 	}
-	
+
 	@Override
 	public String getModuleName() {
-		return "com.example.contacts.contactsapp";
+		return "com.example.contacts.ContactsApp";
 	}
 
+    @Test
 	public void testNewContact() {
 		//Test method
 		final Contact contact = new Contact();
