@@ -21,6 +21,7 @@ public class ContactEditPopupTest extends GWTTestCase
 	}
 
 	public void testNewContact() {
+		//Test method
 		final Contact contact = new Contact();
 		ContactEditPopup popup = new ContactEditPopup(contact);
 		popup.getFirstNameField().setText("Thomas");
