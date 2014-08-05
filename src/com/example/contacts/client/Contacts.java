@@ -53,16 +53,16 @@ public class Contacts implements EntryPoint {
 	}
 
 	protected void editContact(final Contact contact) {
-		ContactEditPopup popup = new ContactEditPopup(contact);
-		popup.addClickHandler(new ClickHandler() {
+		ContactEditPopupPresenter contactEditPresenter = new ContactEditPopupPresenter(contact);
+		contactEditPresenter.setView(new ContactEditPopupView());
+		contactEditPresenter.init();
+		contactEditPresenter.addSaveClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				service.addContact(contact, new AsyncCallback<Void>() {
-
 					@Override
 					public void onFailure(Throwable caught) {
 						// TODO Auto-generated method stub
-						
 					}
 
 					@Override
@@ -73,7 +73,6 @@ public class Contacts implements EntryPoint {
 				});
 			}
 		});
-		popup.show();
-		popup.setModal(true);
+		contactEditPresenter.show();
 	}
 }
