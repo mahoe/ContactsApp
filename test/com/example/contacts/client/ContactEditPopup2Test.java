@@ -21,7 +21,13 @@ public class ContactEditPopup2Test {
 
 			}
 
-			@Override
+            @Override
+            public void onSave()
+            {
+
+            }
+
+            @Override
 			public void setLastName(String lastName) {
 				Assert.assertEquals("Mueller", lastName);
 			}
@@ -74,12 +80,14 @@ public class ContactEditPopup2Test {
     {
         Contact contact = new Contact();
        ContactEditPopupPresenter presenter = new ContactEditPopupPresenter(contact);
-        presenter.setView(new ContactEditPopupInterface()
+        final ContactEditPopupInterface view = new ContactEditPopupInterface()
         {
+            public SaveHandler handler;
+
             @Override
             public void addSaveHandler(SaveHandler handler)
             {
-
+                this.handler = handler;
             }
 
             @Override
@@ -129,9 +137,20 @@ public class ContactEditPopup2Test {
             {
 
             }
-        });
+
+            @Override
+            public void onSave()
+            {
+                handler.onSave();
+            }
+        };
+        presenter.setView(view);
 
         presenter.init();
+        view.onSave();
 
+        Assert.assertEquals("Tomas", contact.getFirstName());
+        Assert.assertEquals("Müller", contact.getLastName());
+        Assert.assertEquals("to.mue@fdg.com", contact.getEmailAddress());
     }
 }

@@ -20,4 +20,6 @@ public interface ContactEditPopupInterface {
 
 	void show();
 
+    void onSave();
+
 }
