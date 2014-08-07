@@ -28,7 +28,7 @@ public class ContactEditPopupTest extends GWTTestCase
 //		popup.getFirstNameField().setText("Thomas");
 //		popup.getLastNameField().setText("Mueller");
 //		popup.getEmailField().setText("thomas.mueller@fcb.de");
-//		popup.addSaveClickHandler(new ClickHandler() {
+//		popup.addSaveHandler(new ClickHandler() {
 //			@Override
 //			public void onClick(ClickEvent event) {
 //				Assert.assertEquals("Thomas", contact.getFirstName());

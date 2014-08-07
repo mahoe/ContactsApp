@@ -1,12 +1,10 @@
 package com.example.contacts.client;
 
-import com.google.gwt.event.dom.client.ClickHandler;
-
 public interface ContactEditPopupInterface {
 
-	void addSaveClickHandler(ClickHandler clickHandler);
+    void addSaveHandler(SaveHandler handler);
 
-	String getFirstName();
+    String getFirstName();
 
 	String getLastName();
 
@@ -21,5 +19,5 @@ public interface ContactEditPopupInterface {
 	void setEmail(String emailAddress);
 
 	void show();
-	
+
 }
