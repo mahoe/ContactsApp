@@ -2,6 +2,8 @@ package com.example.contacts.client;
 
 import java.util.List;
 
+import com.example.contacts.client.event.EditContactEvent;
+import com.example.contacts.client.eventbus.CustomEventBus;
 import com.example.contacts.shared.Contact;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -51,28 +53,7 @@ public class ContactsPresenter {
 	}
 
 	protected void editContact(final Contact contact) {
-		ContactEditPopupPresenter contactEditPresenter = new ContactEditPopupPresenter(
-				contact);
-		contactEditPresenter.setView(new ContactEditPopupView());
-		contactEditPresenter.init();
-		contactEditPresenter.addSaveHandler(new SaveHandler() {
-			@Override
-			public void onSave() {
-				service.addContact(contact, new AsyncCallback<Void>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-					}
-
-					@Override
-					public void onSuccess(Void result) {
-						list.add(contact);
-						contactsView.addContact(contact, list.size());
-					}
-				});
-			}
-		});
-		contactEditPresenter.show();
+		CustomEventBus.getInstance().fireEvent(new EditContactEvent(contact));
 	}
 
 	public void addContacts(List<Contact> contacts) {
