@@ -2,9 +2,24 @@ package com.example.contacts.client;
 
 import com.example.contacts.shared.Contact;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ContactEditPopup2Test {
+
+    @Mock
+    private ClientServiceAsync clientServiceAsync;
+
+    @Before
+    public void setup(){
+        MockitoAnnotations.initMocks(this);
+    }
 
 	@Test
     public void testExistingContact()

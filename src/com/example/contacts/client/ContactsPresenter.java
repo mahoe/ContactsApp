@@ -2,6 +2,7 @@ package com.example.contacts.client;
 
 import java.util.List;
 
+import com.example.contacts.client.event.ContactSavedEvent;
 import com.example.contacts.client.event.EditContactEvent;
 import com.example.contacts.client.eventbus.CustomEventBus;
 import com.example.contacts.shared.Contact;
@@ -9,7 +10,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class ContactsPresenter {
+public class ContactsPresenter implements ContactSavedEvent.ContactSavedEventHandler {
 	ClientServiceAsync service;
 
 	private List<Contact> list;
@@ -21,6 +22,7 @@ public class ContactsPresenter {
 		this.contactsView = contactsView;
 		fetchData();
 		createView();
+        CustomEventBus.getInstance().addHandler(ContactSavedEvent.TYPE, this);
 	}
 
 	private void createView() {
@@ -77,4 +79,11 @@ public class ContactsPresenter {
 			}
 		});
 	}
+
+    @Override
+    public void onContactSaved(ContactSavedEvent event) {
+        final Contact contact = event.getContact();
+        contactsView.addContact(contact,list.size());
+        list.add(contact);
+    }
 }

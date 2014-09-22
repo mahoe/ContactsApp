@@ -45,22 +45,6 @@ public class MasterPresenter implements ShowPresenterHandler,
 
 		contactEditPopupPresenter.setView(new ContactEditPopupView());
 		contactEditPopupPresenter.init();
-		contactEditPopupPresenter.addSaveHandler(new SaveHandler() {
-			@Override
-			public void onSave() {
-				clientServiceAsync.addContact(contact, new AsyncCallback<Void>() {
-					@Override
-					public void onFailure(Throwable caught) {
-					}
-
-					@Override
-					public void onSuccess(Void result) {
-						//list.add(contact);
-						//contactsView.addContact(contact, list.size());
-					}
-				});
-			}
-		});
 		contactEditPopupPresenter.show();
 
 
